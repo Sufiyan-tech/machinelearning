@@ -9,4 +9,6 @@ plt.plot(x,y)
 plt.xlabel('x-axis')
 plt.ylabel('y-axis')
 plt.title('First Plot')
+
+
 plt.show()
