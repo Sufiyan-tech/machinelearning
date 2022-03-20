@@ -1,24 +1,32 @@
+import matplotlib.animation as animation
+from matplotlib import style
+import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 
-google = pd.read_csv('google_stock_price.csv',squeeze=True)
+plt.style.use('fivethirtyeight')
 
-print(google.head())
+fig1 = plt.figure()
 
-print(google.count())
+ax1 = fig1.add_subplot(1,1,1)
 
-print(len(google))
+def animate(p):
+    google = pd.read_csv('google_stock_price.csv',squeeze=True)
 
-print(google.sum())
+    x1 = []
+    y1 = []
 
-print(google.mean())
+    for i in range(0,google.count()):
+        x = i+1
+        y = google[i]
 
-print(google.sum()/google.count())
+        x1.append(x)
+        y1.append(y)
 
-print(google.std())
+        ax1.clear()
+        ax1.plot(x1,y1)
 
-print(google.min())
 
-print(google.max())
+anime_data = animation.FuncAnimation(fig1,animate,interval=500)
 
-print(google.median())
+plt.show()
